@@ -1,0 +1,40 @@
+{
+    "version": 4,
+    "include": [
+        "firmware-base.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "N64_F446RE",
+            "hidden": true,
+            "cacheVariables": {
+                "MBED_TARGET": "NUCLEO_F446RE",
+                "UPLOAD_METHOD": "STM32CUBE"
+            }
+        },
+        {
+            "name": "N64_F446RE-Debug",
+            "inherits": [
+                "N64_F446RE",
+                "fw-debug"
+            ]
+        },
+        {
+            "name": "N64_F446RE-Release",
+            "inherits": [
+                "N64_F446RE",
+                "fw-release"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "N64_F446RE-Debug",
+            "configurePreset": "N64_F446RE-Debug"
+        },
+        {
+            "name": "N64_F446RE-Release",
+            "configurePreset": "N64_F446RE-Release"
+        }
+    ]
+}

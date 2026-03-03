@@ -1,0 +1,13 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 19,
+        "patch": 0
+    },
+    "include": [
+        "cmake/presets/desktop.json",
+        "cmake/presets/Nucleo64_F446RE.json",
+        "cmake/presets/Nucleo32_L432KC.json"
+    ]
+}

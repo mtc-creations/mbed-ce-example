@@ -1,0 +1,43 @@
+Checks: "-*,
+  clang-diagnostic-*,
+  -clang-diagnostic-unused-const-variable,
+  -clang-diagnostic-pragma-once-outside-header,
+  clang-analyzer-*,
+  bugprone-*,
+  -bugprone-exception-escape,
+  modernize-*,
+  -modernize-use-trailing-return-type,
+  -modernize-deprecated-headers,
+  performance-*,
+  google-*,
+  -google-readability-todo,
+  -google-runtime-references,
+  misc-*,
+  -misc-non-private-member-variables-in-classes,
+  llvm-*,
+  -llvm-header-guard,
+  -llvm-qualified-auto,
+  portability-*,
+  readability-*,
+  -readability-magic-numbers,
+  cert-*,
+  -cert-dcl50-cpp,
+  cppcoreguidelines-*,
+  -cppcoreguidelines-pro-type-vararg,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -cppcoreguidelines-avoid-c-arrays,
+  -cppcoreguidelines-macro-usage,
+  -cppcoreguidelines-pro-type-union-access,
+  -cppcoreguidelines-non-private-member-variables-in-classes,
+  "
+
+CheckOptions:
+  - key: bugprone-assert-side-effect.CheckFunctionCalls
+    value: 1
+  - key: bugprone-assert-side-effect.AssertMacros
+    value: "assert,MBED_ASSERT"
+# enforce naming conventions with https://clang.llvm.org/extra/clang-tidy/checks/readability-identifier-naming.html
