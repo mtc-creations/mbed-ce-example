@@ -4,11 +4,14 @@
             // By default, use a serial baudrate of 115200 and enable buffering on the serial port.
             "platform.stdio-baud-rate": 115200,
             "platform.stdio-buffered-serial": 1,
+            "platform.fatal-error-auto-reboot-enabled": true,
+            "platform.error-reboot-max": 1000,
+            "platform.error-filename-capture-enabled": true,
             // Uncomment to use mbed-baremetal instead of mbed-os
             // "target.application-profile": "bare-metal"
         },
-    },
-    "NUCLEO_F446RE": {
-        // "target.application-profile": "bare-metal"
+        "NUCLEO_F446RE": {
+            // "target.application-profile": "bare-metal"
+        }
     }
 }
