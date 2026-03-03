@@ -21,7 +21,7 @@ else()
 endif()
 
 ### Link user libraries (if needed)
-# target_link_libraries(${APP_TARGET} ex_lib1)
+target_link_libraries(${APP_TARGET} ex_lib1)
 
 # This generates build rules to generate bin/hex files, and to flash the code if you have configured an
 # upload method.

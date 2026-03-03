@@ -11,7 +11,7 @@ namespace ex_lib1
         explicit Example_Class();
     };
 
-    void example_function(std::span<const char> a_span);
+    void example_function(std::span<const char> str);
 } // namespace ex_lib1
 
 #endif
