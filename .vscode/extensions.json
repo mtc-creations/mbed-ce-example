@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "marus25.cortex-debug",
+        "jeff-hykin.better-cpp-syntax",
+        "marus25.cortex-debug-dp-stm32f4",
+        "marus25.cortex-debug-dp-stm32l4",
+    ]
+}

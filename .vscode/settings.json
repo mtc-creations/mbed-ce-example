@@ -1,0 +1,38 @@
+{
+    // Without this setting, switching between targets requires you to manually delete cache and reconfigure. 
+    // By using this setting, each variant has its own build dir.
+    "cmake.buildDirectory": "${workspaceFolder}/build/${variant:board}-${variant:buildType}",
+    // Use the GCC ARM None EABI kit defined in cmake-kits.json so cmake-tools doesn't pick MSVC/Clang.
+    "cmake.defaultKit": "GCC ARM None EABI",
+    "cmake.generator": "Ninja",
+    // This reconfigures the UI to add variant & build target selection to the bottom bar, and to hide 
+    // features not used in embedded development.
+    "cmake.configureOnOpen": false,
+    "cmake.options.statusBarVisibility": "compact",
+    "cmake.options.advanced": {
+        "build": {
+            "statusBarVisibility": "visible",
+            "inheritDefault": "hidden"
+        },
+        "launch": {
+            "statusBarVisibility": "visible",
+            "inheritDefault": "hidden"
+        },
+        "debug": {
+            "statusBarVisibility": "visible",
+            "inheritDefault": "hidden"
+        },
+        "cpack": {
+            "statusBarVisibility": "hidden",
+            "inheritDefault": "hidden"
+        },
+        "workflow": {
+            "statusBarVisibility": "hidden",
+            "inheritDefault": "hidden"
+        }
+    },
+    // stop the error in cmake-variants.yaml
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/microsoft/vscode-cmake-tools/main/schemas/variants-schema.json": "cmake-variants.yaml"
+    }
+}
