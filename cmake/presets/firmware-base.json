@@ -1,0 +1,32 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "firmware-base",
+            "hidden": true,
+            "description": "Base preset for Mbed CE firmware builds",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "BUILD_FIRMWARE": "ON",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+            }
+        },
+        {
+            "name": "fw-debug",
+            "hidden": true,
+            "inherits": "firmware-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "fw-release",
+            "hidden": true,
+            "inherits": "firmware-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ]
+}

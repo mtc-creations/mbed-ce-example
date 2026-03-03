@@ -1,0 +1,40 @@
+{
+    "version": 4,
+    "include": [
+        "firmware-base.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "N32_L432KC",
+            "hidden": true,
+            "cacheVariables": {
+                "MBED_TARGET": "NUCLEO_L432KC",
+                "UPLOAD_METHOD": "STM32CUBE"
+            }
+        },
+        {
+            "name": "N32_L432KC-Debug",
+            "inherits": [
+                "N32_L432KC",
+                "fw-debug"
+            ]
+        },
+        {
+            "name": "N32_L432KC-Release",
+            "inherits": [
+                "N32_L432KC",
+                "fw-release"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "N32_L432KC-Debug",
+            "configurePreset": "N32_L432KC-Debug"
+        },
+        {
+            "name": "N32_L432KC-Release",
+            "configurePreset": "N32_L432KC-Release"
+        }
+    ]
+}
