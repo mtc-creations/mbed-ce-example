@@ -1,0 +1,11 @@
+[
+  {
+    "name": "GCC ARM None EABI",
+    "compilers": {
+      "C": "arm-none-eabi-gcc",
+      "CXX": "arm-none-eabi-g++",
+      "ASM": "arm-none-eabi-gcc"
+    },
+    "isTrusted": true
+  }
+]
