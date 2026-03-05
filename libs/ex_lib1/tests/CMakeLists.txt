@@ -21,7 +21,7 @@ target_link_libraries(${PROJECT_NAME}-tests
 
 target_compile_features(${PROJECT_NAME}-tests
     PUBLIC
-        cxx_std_20
+        cxx_std_23
 )
 
 if(BUILD_TESTING)
