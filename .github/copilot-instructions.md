@@ -9,7 +9,7 @@ This is a dual-target embedded/desktop C++ project:
 - **Firmware**: Cross-compiled for STM32 microcontrollers using [Mbed CE](https://github.com/mbed-ce/mbed-os) RTOS
 - **Desktop**: Native Windows build for unit testing hardware-independent libraries using Catch2
 
-The target hardware is STM32 Nucleo development boards (e.g. NUCLEO_F446RE, NUCLEO_L432KC). The project uses C++20.
+The target hardware is STM32 Nucleo development boards (e.g. NUCLEO_F446RE, NUCLEO_L432KC). The project uses C++23.
 
 ## Project Structure
 
@@ -65,7 +65,7 @@ The root `CMakeLists.txt` uses `BUILD_FIRMWARE` (ON/OFF) to include either `cmak
 
 ## C++ Standards and Practices
 
-- The project uses C++20
+- The project uses C++23
 - Desktop builds target MSVC on Windows
 - Firmware builds use ARM GCC (which has a different set of supported C++ features)
 - Avoid exceptions in firmware code (Mbed CE typically compiles with `-fno-exceptions`)

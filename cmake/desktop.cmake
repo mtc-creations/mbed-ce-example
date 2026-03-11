@@ -2,12 +2,10 @@
 # Desktop Build
 # Included from root CMakeLists.txt when BUILD_FIRMWARE=OFF
 # Native compilation for unit testing hardware-independent libraries.
+# Note: project() is declared in the root CMakeLists.txt before this file is included.
 #
 
-project(MbedCE-Template-Desktop
-        LANGUAGES C CXX)
-
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ######################################################################################################
