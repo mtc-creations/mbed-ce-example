@@ -72,18 +72,15 @@ mbed-os/                    Mbed CE RTOS (Git submodule — do NOT modify)
 
 1. **Clone** (with submodules):
    ```bash
-   git clone --recursive https://github.com/mbed-ce/mbed-ce-hello-world.git
+   git clone --recursive https://github.com/mtc-creations/mbed-ce-example.git
    ```
 2. Optionally **update Mbed OS**:
    ```bash
    cd mbed-ce-hello-world/mbed-os && git fetch origin && git reset --hard origin/main
    ```
 3. **Install the ARM toolchain** following the [toolchain setup guide](https://mbed-ce.dev/getting-started/toolchain-install/).
-4. **Configure** using one of the provided CMake presets (see [Presets](#cmake-presets) below) via:
-   - [Command line](https://mbed-ce.dev/getting-started/ide_cli_setup/cli_setup/)
-   - [CLion](https://mbed-ce.dev/getting-started/ide_cli_setup/clion_setup/)
-   - [VS Code](https://mbed-ce.dev/getting-started/ide_cli_setup/vscode_setup/)
-5. **Build & flash** (firmware): build the `flash-blink` target to upload code to a connected board.
+4. **Configure** using one of the provided CMake presets (see [Presets](#cmake-presets) below)
+5. **Build & flash** (firmware): build the `flash-blink` target to upload code to a connected board. In VSCode debugging can be started by clicking the green play button under the "Run and Debug" menu.
 6. **Run tests** (desktop):
    ```bash
    cmake --preset desktop-tests
