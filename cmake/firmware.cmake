@@ -39,6 +39,11 @@ project(MbedCE-Template
         # VERSION 1.0.0
         LANGUAGES C CXX ASM)
 
+### Enforce C++23 globally for all firmware targets
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 ### Include Mbed project setup file
 include(mbed_project_setup)
 

@@ -1,7 +1,7 @@
 # CI workflow for the Mbed CE project.
 # Two jobs:
 #   firmware-build  — cross-compiles for both STM32 targets using the ARM GNU toolchain
-#   desktop-tests   — native build with Clang, runs Catch2 unit tests
+#   desktop-tests   — native build with GCC/Clang/MSVC, runs Catch2 unit tests
 
 on:
   pull_request:
@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Checkout (shallow)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           submodules: false
           fetch-depth: 1
@@ -41,14 +41,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-venv
 
+      # upload method is set to NONE in the presets, so that the build will succeed in the cloud even without the required tools for flashing
       - name: Build NUCLEO_F446RE
         run: |
-          cmake --preset N64_F446RE-Debug
+          cmake --preset N64_F446RE-Debug -DUPLOAD_METHOD=NONE
           cmake --build --preset N64_F446RE-Debug
 
       - name: Build NUCLEO_L432KC
         run: |
-          cmake --preset N32_L432KC-Debug
+          cmake --preset N32_L432KC-Debug -DUPLOAD_METHOD=NONE
           cmake --build --preset N32_L432KC-Debug
 
   desktop-tests:
@@ -56,7 +57,7 @@ jobs:
 
     steps:
       - name: Checkout (shallow)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
 

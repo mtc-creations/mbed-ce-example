@@ -30,7 +30,7 @@ Firmware builds use the Mbed CE toolchain file which must be included **before**
 
 ### Desktop / Unit-Test Build
 
-The desktop build compiles only the `libs/` tree using the host compiler. Test dependencies (Catch2 v3 and fmt) are pulled in via `FetchContent` inside `cmake/desktop.cmake` — individual libraries must **not** add their own `FetchContent` or `find_package` calls for these.
+The desktop build compiles only the `libs/` tree using the host compiler (GCC, Clang, MSVC). Test dependencies (Catch2 v3 and fmt) are pulled in via `FetchContent` inside `cmake/desktop.cmake` — individual libraries must **not** add their own `FetchContent` or `find_package` calls for these.
 
 ---
 
@@ -76,7 +76,7 @@ mbed-os/                    Mbed CE RTOS (Git submodule — do NOT modify)
    ```
 2. Optionally **update Mbed OS**:
    ```bash
-   cd mbed-ce-hello-world/mbed-os && git fetch origin && git reset --hard origin/main
+   cd mbed-ce-example/mbed-os && git fetch origin && git reset --hard origin/main
    ```
 3. **Install the ARM toolchain** following the [toolchain setup guide](https://mbed-ce.dev/getting-started/toolchain-install/).
 4. **Configure** using one of the provided CMake presets (see [Presets](#cmake-presets) below)
