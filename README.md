@@ -2,36 +2,36 @@
 
 A dual-target C++23 project: cross-compiled **firmware** for STM32 microcontrollers via [Mbed CE](https://github.com/mbed-ce/mbed-os), and a native **desktop** build for unit-testing hardware-independent libraries with [Catch2](https://github.com/catchorg/Catch2).
 
-# How it works (in VSCode anyway)
+# How it works (in VS Code anyway)
 
 ## Embedded Targets
 
 In VS Code, you can switch between targets using the integrated CMake preset support; other IDEs (e.g., Visual Studio and CLion) provide similar functionality.
 
-<img width="443" height="423" alt="VSCode CMake preset selection showing embedded board targets" src="https://github.com/user-attachments/assets/420a5cc7-1b8c-4cf9-8202-438f87a041a0" />
+<img width="443" height="423" alt="VS Code CMake preset selection showing embedded board targets" src="https://github.com/user-attachments/assets/420a5cc7-1b8c-4cf9-8202-438f87a041a0" />
 
 ### Debugging
-mbed-ce uses CMake to generate the required VSCode launch.json files for debugging, based on the currently selected target and upload method. Clicking the play button will build the project, start the GDB server and flash the firmware to the connected board. Most upload methods will then breakpoint in main once the target boots the firmware. Boards / upload methods can be changed in the Cmake Presets.
+Mbed CE uses CMake to generate the required VS Code launch.json files for debugging, based on the currently selected target and upload method. Clicking the play button will build the project, start the GDB server, and flash the firmware to the connected board. Most upload methods will then breakpoint in main once the target boots the firmware. Boards and upload methods can be changed in the CMake presets.
 
-<img width="497" height="127" alt="VSCode Run and Debug view with Cortex-M debug configuration and play button" src="https://github.com/user-attachments/assets/1065e0fc-19ed-4e26-aae6-e6d2d694bd98" />
+<img width="497" height="127" alt="VS Code Run and Debug view with Cortex-M debug configuration and play button" src="https://github.com/user-attachments/assets/1065e0fc-19ed-4e26-aae6-e6d2d694bd98" />
 
 ### Flashing
-mbed-ce also generates VSCode tasks.json to allow you to build or flash the device without starting a debug session, right within the IDE.
+Mbed CE also generates VS Code tasks.json to allow you to build or flash the device without starting a debug session, right within the IDE.
 
-<img width="369" height="419" alt="VSCode Tasks view showing build and flash tasks for STM32 firmware" src="https://github.com/user-attachments/assets/0afc09c2-c4a2-4c04-8f9a-7b475e932b2d" />
+<img width="369" height="419" alt="VS Code Tasks view showing build and flash tasks for STM32 firmware" src="https://github.com/user-attachments/assets/0afc09c2-c4a2-4c04-8f9a-7b475e932b2d" />
 
 
 ## Desktop Targets
 
-Swapping your Cmake preset to desktop, you can run unit tests without any hardware connected using the VSCode testing window (MSVC, Clang or GCC Compiler - thanks to Catch2 support).
-<img width="963" height="577" alt="VSCode Testing window running Catch2 unit tests for the desktop target" src="https://github.com/user-attachments/assets/38b3d0aa-07b5-4b69-9c40-1e6639a31b63" />
+By switching your CMake preset to desktop, you can run unit tests without any hardware connected using the VS Code testing window (MSVC, Clang, or GCC — thanks to Catch2 support).
+<img width="963" height="577" alt="VS Code Testing window running Catch2 unit tests for the desktop target" src="https://github.com/user-attachments/assets/38b3d0aa-07b5-4b69-9c40-1e6639a31b63" />
 
 
 ---
 
 # Architecture Overview
 
-The project is split into two mutually exclusive build modes controlled by a single CMake option (`BUILD_FIRMWARE`). A given build directory is always one or the other
+The project is split into two mutually exclusive build modes controlled by a single CMake option (`BUILD_FIRMWARE`). A given build directory is always one or the other.
 
 | Build mode | Compiler | Purpose | Entry point |
 |---|---|---|---|
@@ -105,7 +105,7 @@ mbed-os/                    Mbed CE RTOS (Git submodule — do NOT modify)
    ```
 3. **Install the ARM toolchain** following the [toolchain setup guide](https://mbed-ce.dev/getting-started/toolchain-install/).
 4. **Configure** using one of the provided CMake presets (see [Presets](#cmake-presets) below)
-5. **Build & flash** (firmware): build the `flash-blink` target to upload code to a connected board. In VSCode debugging can be started by clicking the green play button under the "Run and Debug" menu.
+5. **Build & flash** (firmware): build the `flash-blink` target to upload code to a connected board. In VS Code, debugging can be started by clicking the green play button under the "Run and Debug" menu.
 6. **Run tests** (desktop):
    ```bash
    cmake --preset desktop-tests
