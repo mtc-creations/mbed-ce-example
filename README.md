@@ -2,9 +2,9 @@
 
 A dual-target C++23 project: cross-compiled **firmware** for STM32 microcontrollers via [Mbed CE](https://github.com/mbed-ce/mbed-os), and a native **desktop** build for unit-testing hardware-independent libraries with [Catch2](https://github.com/catchorg/Catch2).
 
-# How it works (in VS Code anyway)
+## VS Code Integration
 
-## Embedded Targets
+Switch targets via CMake preset selector. Mbed CE auto-generates `tasks.json` (build/flash) and `launch.json` (debug) — the green play button builds, flashes, and starts a GDB debug session.
 
 In VS Code, you can switch between targets using the integrated CMake preset support; other IDEs (e.g., Visual Studio and CLion) provide similar functionality.
 
@@ -31,14 +31,12 @@ By switching your CMake preset to desktop, you can run unit tests without any ha
 
 # Architecture Overview
 
-The project is split into two mutually exclusive build modes controlled by a single CMake option (`BUILD_FIRMWARE`). A given build directory is always one or the other.
+The project is split into two mutually exclusive build modes controlled by `BUILD_FIRMWARE`:
 
 | Build mode | Compiler | Purpose | Entry point |
 |---|---|---|---|
-| **Firmware** (`BUILD_FIRMWARE=ON`) | ARM GNU Toolchain (`arm-none-eabi-gcc`) | Cross-compile for STM32 targets | `cmake/firmware.cmake` |
-| **Desktop** (`BUILD_FIRMWARE=OFF`) | Native host compiler (MSVC on Windows) | Unit-test `libs/` on the PC | `cmake/desktop.cmake` |
-
-The root `CMakeLists.txt` delegates to the appropriate file:
+| **Firmware** (`BUILD_FIRMWARE=ON`) | `arm-none-eabi-gcc` | Cross-compile for STM32 | `cmake/firmware.cmake` |
+| **Desktop** (`BUILD_FIRMWARE=OFF`) | MSVC (host) | Unit-test `libs/` on PC | `cmake/desktop.cmake` |
 
 ```cmake
 if(BUILD_FIRMWARE)
@@ -49,13 +47,7 @@ else()
 endif()
 ```
 
-### Cross-Compilation (Firmware)
-
-Firmware builds use the Mbed CE toolchain file which must be included **before** `project()`. This is handled automatically by `cmake/firmware.cmake`. The ARM toolchain, target board, and upload method are all selected through **CMake presets** (see below). The build produces `.bin`/`.hex` files ready to flash via ST-LINK.
-
-### Desktop / Unit-Test Build
-
-The desktop build compiles only the `libs/` tree using the host compiler (GCC, Clang, MSVC). Test dependencies (Catch2 v3 and fmt) are pulled in via `FetchContent` inside `cmake/desktop.cmake` — individual libraries must **not** add their own `FetchContent` or `find_package` calls for these.
+Firmware builds use the Mbed CE toolchain file (included before `project()` automatically). The desktop build compiles only `libs/` — Catch2 v3 and fmt are fetched via `FetchContent` in `cmake/desktop.cmake`; individual libraries must **not** add their own `FetchContent` or `find_package` calls for these.
 
 ---
 
